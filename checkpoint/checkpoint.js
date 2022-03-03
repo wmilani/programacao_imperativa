@@ -13,70 +13,59 @@
 */
 
 
-const comida1 = "pipoca";
-const tempoPipoca = 31;
+const comida = ["pipoca", "macarrao", "carne", "feijao", "brigadeiro"];
 
-tempoPipoca >= 10 && tempoPipoca <= 19
-? console.log("Prato pronto")
-: tempoPipoca <= 9
-? console.log("Tempo insuficiente")
-: tempoPipoca >= 20 && tempoPipoca <=29
-? console.log("Seu prato queimou")
-: tempoPipoca >= 30
-? console.log("Kaaabum")
-: console.log("Prato pronto, bom apetite!!!")
+function microondas(codigoPrato, tempoPadrao) {
+    let tempoPreparo = tempoPadrao;
 
-const comida2 = "macarrao";
-const tempoMacarrao = 23;
+    let tempoPronto
+    let tempoQueimou
+    let tempoKabum
 
-tempoMacarrao >= 8 && tempoMacarrao <= 15
-? console.log("Prato pronto")
-: tempoMacarrao <= 8
-? console.log("Tempo insuficiente")
-: tempoMacarrao >= 16 && tempoMacarrao<= 23
-? console.log("Seu prato queimou")
-: tempoMacarrao >= 24
-? console.log("Kaaabum")
-: console.log("Prato pronto, bom apetite")
+    switch (parseInt(codigoPrato)) {
+        case 0:
+            tempoPronto = 10;
+            tempoQueimou = 20;
+            tempoKabum = 30;
+            break;
+        case 1:
+            tempoPronto = 8;
+            tempoQueimou = 16;
+            tempoKabum = 24;
+            break;
+        case 2:
+            tempoPronto = 15;
+            tempoQueimou = 30;
+            tempoKabum = 45;
+            break;
+        case 3:
+            tempoPronto = 12;
+            tempoQueimou = 24;
+            tempoKabum = 36;
+            break;
+        case 4:
+            tempoPronto = 8;
+            tempoQueimou = 16;
+            tempoKabum = 24;
+            break;
+        default:
+            console.log("Digite um prato válido")
+            break;
+    }
 
-
-const comida3 = "carne";
-const tempoCarne = 14;
-
-tempoCarne >= 15 && tempoCarne <= 29
-? console.log("Prato pronto")
-: tempoCarne <= 15
-? console.log("Tempo insuficiente")
-: tempoCarne >= 30 && tempoCarne <= 44
-? console.log("Seu prato queimou")
-: tempoCarne >= 45
-? console.log("Kaaabum")
-: console.log("Prato pronto, bom apetite")
-
-const comida4 = "feijao";
-const tempoFeijao = 12;
-
-tempoFeijao >= 12 && tempoFeijao <= 23
-? console.log("Prato pronto")
-: tempoFeijao <= 12
-? console.log("Tempo insuficiente")
-: tempoFeijao >= 24 && tempoFeijao <= 35
-? console.log("Seu prato queimou")
-: tempoFeijao >= 36
-? console.log("Kaaabum")
-: console.log("Prato pronto, bom apetite")
-
-const comida5 = "brigadeiro"
-const tempoBrigadeiro = 8;
-
-tempoBrigadeiro >= 8 && tempoBrigadeiro <= 15
-? console.log("Prato pronto")
-: tempoBrigadeiro <= 7
-? console.log("Tempo insuficiente")
-: tempoBrigadeiro >= 16 && tempoBrigadeiro <= 23
-? console.log("Seu prato queimou")
-: tempoBrigadeiro >= 24
-? console.log("Kaaabum")
-: console.log("Prato pronto, bom apetite")
+    let mensagem;
+    if (tempoPreparo < tempoPronto) mensagem = "Tempo insuficiente"
+    if (tempoPreparo == tempoPronto) mensagem = "Prato pronto"
+    if (tempoPreparo > tempoPronto && tempoPreparo < tempoQueimou) mensagem = "quase deu ruim"
+    if (tempoPreparo == tempoQueimou) mensagem = "Prato queimou"
+    if (tempoPreparo > tempoQueimou && tempoPreparo < tempoKabum) mensagem = "Você não sabe o tempo da comida?"
+    if (tempoPreparo == tempoKabum) mensagem = "Kaabum"
+    if (tempoPreparo > tempoKabum) mensagem = "Já era! Compre outro microondas!"
 
 
+    console.log(mensagem)
+
+
+}
+
+microondas(3, 100);
